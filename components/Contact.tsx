@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mail, MapPin } from 'lucide-react';
+import { Mail, MapPin, Linkedin, Github } from 'lucide-react';
 import RevealOnScroll from './RevealOnScroll';
 
 const Contact: React.FC = () => {
@@ -19,12 +19,33 @@ const Contact: React.FC = () => {
         </RevealOnScroll>
 
         <RevealOnScroll>
-          <div className="flex flex-col md:flex-row items-center justify-center gap-6 mb-16">
-            <a href="mailto:suri86438@gmail.com" className="flex items-center gap-3 px-8 py-4 rounded-full bg-white text-black font-semibold hover:bg-zinc-200 transition-colors">
+          <div className="flex flex-wrap items-center justify-center gap-4 mb-16">
+            <a href="mailto:suri86438@gmail.com" className="flex items-center gap-3 px-6 py-3 rounded-full bg-white text-black font-semibold hover:bg-zinc-200 transition-colors">
               <Mail size={20} />
               suri86438@gmail.com
             </a>
-            <div className="flex items-center gap-3 px-8 py-4 rounded-full border border-white/10 text-zinc-300">
+            
+            <a 
+              href="https://www.linkedin.com/in/surendra-kumar-202b76337/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 px-6 py-3 rounded-full border border-white/10 text-zinc-300 hover:bg-white/5 hover:text-white hover:border-blue-500/50 transition-all"
+            >
+              <Linkedin size={20} />
+              LinkedIn
+            </a>
+
+            <a 
+              href="https://github.com/Suri-618" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 px-6 py-3 rounded-full border border-white/10 text-zinc-300 hover:bg-white/5 hover:text-white hover:border-purple-500/50 transition-all"
+            >
+              <Github size={20} />
+              GitHub
+            </a>
+
+            <div className="flex items-center gap-3 px-6 py-3 rounded-full border border-white/10 text-zinc-300 bg-zinc-900/50 cursor-default">
               <MapPin size={20} />
               Vijayawada, India
             </div>

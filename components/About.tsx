@@ -2,28 +2,43 @@ import React from 'react';
 import RevealOnScroll from './RevealOnScroll';
 
 const About: React.FC = () => {
+  const stats = [
+    { label: "GitHub Repos", value: "5+" },
+    { label: "LeetCode Problems", value: "150+" },
+    { label: "CodeChef Problems", value: "350+" },
+    { label: "CP Contests", value: "3" }
+  ];
+
   return (
     <section id="about" className="py-32 relative">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row gap-16 items-center">
+        <div className="flex flex-col md:flex-row gap-12 lg:gap-20 items-center">
           
-          <div className="w-full md:w-1/2 relative">
+          {/* Visual Section - Aurora Image */}
+          <div className="w-full md:w-2/5 relative">
             <RevealOnScroll width="100%">
-              <div className="absolute inset-0 bg-gradient-to-tr from-purple-500 to-blue-500 rounded-3xl blur-2xl opacity-20"></div>
-              <div className="relative rounded-3xl overflow-hidden border border-white/10 bg-zinc-900/50">
-                <img 
-                  src="https://picsum.photos/800/1000?grayscale" 
-                  alt="Surendra Kumar" 
-                  className="w-full h-auto object-cover opacity-80 hover:opacity-100 transition-opacity duration-500 transform hover:scale-105"
-                />
+              <div className="relative group">
+                {/* Decorative Glow */}
+                <div className="absolute -inset-1 bg-gradient-to-br from-purple-600 to-blue-600 rounded-3xl blur-lg opacity-30 group-hover:opacity-60 transition duration-500"></div>
+                
+                <div className="relative h-[500px] w-full rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-zinc-900">
+                    <img 
+                        src="https://images.unsplash.com/photo-1531306728370-e2ebd9d7bb99?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+                        alt="Aurora Borealis" 
+                        className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
+                    />
+                    {/* Overlay Gradient for integration */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                </div>
               </div>
             </RevealOnScroll>
           </div>
           
-          <div className="w-full md:w-1/2 space-y-8">
+          {/* Content Section */}
+          <div className="w-full md:w-3/5 space-y-8">
             <RevealOnScroll>
-              <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight">
-                Developer <span className="text-zinc-600">x</span> Dreamer
+              <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight flex items-center gap-3">
+                About <span className="text-zinc-500">Me</span>
               </h2>
             </RevealOnScroll>
             
@@ -41,17 +56,15 @@ const About: React.FC = () => {
                 </p>
               </RevealOnScroll>
             </div>
-            
-            <RevealOnScroll>
-              <div className="flex gap-12 pt-8 border-t border-white/10">
-                <div>
-                  <h4 className="text-4xl font-bold text-white mb-1">5+</h4>
-                  <p className="text-sm text-zinc-500 uppercase tracking-wider">Open Source</p>
-                </div>
-                <div>
-                  <h4 className="text-4xl font-bold text-white mb-1">350+</h4>
-                  <p className="text-sm text-zinc-500 uppercase tracking-wider">Problems Solved</p>
-                </div>
+
+            <RevealOnScroll width="100%">
+              <div className="grid grid-cols-2 gap-4 pt-6">
+                {stats.map((stat, idx) => (
+                  <div key={idx} className="p-4 rounded-xl bg-zinc-900/50 border border-white/5 hover:border-purple-500/30 hover:bg-white/5 transition-all duration-300 group">
+                    <div className="text-3xl font-bold text-white mb-1 group-hover:text-purple-400 transition-colors">{stat.value}</div>
+                    <div className="text-sm text-zinc-500 group-hover:text-zinc-400 transition-colors">{stat.label}</div>
+                  </div>
+                ))}
               </div>
             </RevealOnScroll>
           </div>
