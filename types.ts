@@ -1,11 +1,15 @@
 export interface Project {
   title: string;
+  type: string;
   description: string;
   techStack: string[];
   links: {
     github?: string;
     live?: string;
   };
+  image: string;
+  features: string[];
+  color: 'blue' | 'pink' | 'purple' | 'emerald';
 }
 
 export interface ExperienceItem {

@@ -26,7 +26,7 @@ const certifications = [
 
 const Education: React.FC = () => {
   return (
-    <section className="py-32 bg-zinc-950/30">
+    <section id="education" className="py-32 bg-zinc-950/30">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Education Section */}
