@@ -121,11 +121,13 @@ const Projects: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="flex flex-col items-center justify-center mb-24 text-center">
-            <span className="text-zinc-500 font-mono text-sm tracking-wider uppercase mb-4">Featured Case Studies</span>
-            <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tight">Curated Work</h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mt-6 rounded-full"></div>
-        </div>
+        <RevealOnScroll width="100%">
+          <div className="flex flex-col items-center justify-center mb-24 text-center">
+              <span className="text-zinc-500 font-mono text-sm tracking-wider uppercase mb-4">Featured Case Studies</span>
+              <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tight">Curated Work</h2>
+              <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mt-6 rounded-full"></div>
+          </div>
+        </RevealOnScroll>
 
         <div className="flex flex-col gap-8">
           {projectsData.map((project, idx) => {
@@ -136,9 +138,10 @@ const Projects: React.FC = () => {
             return (
               <div 
                 key={idx} 
-                className="sticky top-24 md:top-32 self-start"
+                className="sticky top-24 md:top-32 self-start w-full"
                 style={{ top: stickyTop }}
               >
+               <RevealOnScroll width="100%" delay={idx * 100}>
                 <div className="relative group bg-zinc-900 border border-white/10 rounded-3xl overflow-hidden shadow-2xl transition-all duration-500 hover:border-white/20">
                   
                   {/* Background Gradient Effect */}
@@ -164,7 +167,7 @@ const Projects: React.FC = () => {
                         <img 
                           src={project.image} 
                           alt={project.title} 
-                          className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                          className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-[cubic-bezier(0.25,0.1,0.25,1.0)]"
                         />
                         {/* Overlay */}
                         <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500"></div>
@@ -238,6 +241,7 @@ const Projects: React.FC = () => {
                     </div>
                   </div>
                 </div>
+               </RevealOnScroll>
               </div>
             );
           })}

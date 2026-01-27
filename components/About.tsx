@@ -36,20 +36,20 @@ const About: React.FC = () => {
           
           {/* Content Section */}
           <div className="w-full md:w-3/5 space-y-8">
-            <RevealOnScroll>
+            <RevealOnScroll delay={200}>
               <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight flex items-center gap-3">
                 About <span className="text-zinc-500">Me</span>
               </h2>
             </RevealOnScroll>
             
             <div className="space-y-6 text-lg text-zinc-400 leading-relaxed font-light">
-              <RevealOnScroll>
+              <RevealOnScroll delay={400}>
                 <p>
                   I am currently pursuing my B.Tech in Artificial Intelligence and Machine Learning at Aditya University. 
                   My journey involves architecting foundational data structures and optimizing algorithms to improve runtime efficiency.
                 </p>
               </RevealOnScroll>
-              <RevealOnScroll>
+              <RevealOnScroll delay={600}>
                 <p>
                   I have experience administering Linux-based operating systems and Oracle DBMS, managing complex system configurations. 
                   Beyond academics, I actively contribute to open-source projects, utilizing advanced Git version control practices to maintain code quality.
@@ -57,7 +57,7 @@ const About: React.FC = () => {
               </RevealOnScroll>
             </div>
 
-            <RevealOnScroll width="100%">
+            <RevealOnScroll width="100%" delay={800}>
               <div className="grid grid-cols-2 gap-4 pt-6">
                 {stats.map((stat, idx) => (
                   <div key={idx} className="p-4 rounded-xl bg-zinc-900/50 border border-white/5 hover:border-purple-500/30 hover:bg-white/5 transition-all duration-300 group">

@@ -42,7 +42,7 @@ const Education: React.FC = () => {
             
             <div className="space-y-12 pl-4 md:pl-8 border-l border-white/10 ml-4 md:ml-6">
               {educationData.map((edu, idx) => (
-                <RevealOnScroll key={idx} width="100%">
+                <RevealOnScroll key={idx} width="100%" delay={idx * 200}>
                   <div className="relative pl-8 group">
                     {/* Timeline Dot */}
                     <div className="absolute left-[-37px] md:left-[-39px] top-2 w-4 h-4 rounded-full bg-zinc-900 border-2 border-zinc-700 group-hover:border-purple-500 group-hover:bg-purple-500 transition-all duration-300 shadow-[0_0_0_4px_rgba(0,0,0,1)]"></div>
@@ -82,7 +82,7 @@ const Education: React.FC = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {certifications.map((cert, idx) => (
-                <RevealOnScroll key={idx} width="100%">
+                <RevealOnScroll key={idx} width="100%" delay={idx * 150}>
                   <div className="group p-6 rounded-2xl bg-zinc-900/40 border border-white/5 hover:bg-zinc-900/80 hover:border-white/20 transition-all duration-300 flex items-center gap-5 hover:-translate-y-1">
                     <div className="w-3 h-3 rounded-full bg-blue-500 shadow-[0_0_12px_rgba(59,130,246,0.6)] group-hover:scale-125 transition-transform shrink-0"></div>
                     <div>

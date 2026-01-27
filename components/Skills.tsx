@@ -78,23 +78,23 @@ const Skills: React.FC = () => {
             {/* Abstract Shape Background Glow */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-purple-500/10 rounded-full blur-[80px] -z-10 pointer-events-none"></div>
 
-            {/* Main Visual Image (Abstract 3D Shape) */}
-            <div className="relative w-48 h-48 md:w-64 md:h-64 mb-6 group">
+            {/* Main Visual Image (Static Crystal 3D Shape) */}
+            <div className="relative w-72 h-72 md:w-96 md:h-96 mb-2 group flex items-center justify-center">
                  <img 
-                   src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=1000&auto=format&fit=crop" 
-                   alt="Skills Abstract"
-                   className="w-full h-full object-cover rounded-full mix-blend-lighten opacity-80 group-hover:opacity-100 transition-opacity duration-700 animate-[spin_20s_linear_infinite]"
+                   src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop" 
+                   alt="Skills Crystal Holographic"
+                   className="w-full h-full object-contain opacity-90 transition-transform duration-700 group-hover:scale-105"
                  />
                  
                  {/* Overlay Text */}
-                 <div className="absolute inset-0 flex items-center justify-center">
+                 <div className="absolute inset-0 flex items-center justify-center pt-8">
                     <h2 className="text-5xl md:text-7xl font-bold text-white tracking-tighter drop-shadow-[0_0_25px_rgba(0,0,0,0.8)] z-20">
                       Skills
                     </h2>
                  </div>
             </div>
             
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 -mt-6 relative z-30">
               <div className="h-[2px] w-8 md:w-16 bg-gradient-to-r from-transparent to-purple-600 rounded-full"></div>
               <span className="text-zinc-400 text-xs md:text-sm font-semibold tracking-[0.2em] uppercase whitespace-nowrap">I Constantly Try To Improve</span>
               <div className="h-[2px] w-8 md:w-16 bg-gradient-to-l from-transparent to-purple-600 rounded-full"></div>
@@ -103,7 +103,7 @@ const Skills: React.FC = () => {
         </RevealOnScroll>
 
         {/* Skills List */}
-        <RevealOnScroll width="100%">
+        <RevealOnScroll width="100%" delay={200}>
           <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4 max-w-4xl mx-auto">
             {allSkills.map((skill, idx) => (
               <div 

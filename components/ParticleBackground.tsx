@@ -16,7 +16,7 @@ const ParticleBackground: React.FC = () => {
     let mouse = {
       x: -1000,
       y: -1000,
-      radius: 150 // Increased radius for smoother interaction
+      radius: 150 // Radius for interaction
     };
 
     class Particle {
@@ -33,24 +33,24 @@ const ParticleBackground: React.FC = () => {
         this.x = x;
         this.y = y;
         
-        // Slower, more "floating" velocity
-        this.dx = (Math.random() - 0.5) * 0.2;
-        this.dy = (Math.random() - 0.5) * 0.2;
+        // Slower, more "floating" velocity for premium feel
+        this.dx = (Math.random() - 0.5) * 0.5; 
+        this.dy = (Math.random() - 0.5) * 0.5;
         
-        // Slightly varied sizes, but generally small
-        this.size = Math.random() * 2 + 0.5;
+        // Slightly variable size, keeping it small and elegant
+        this.size = Math.random() * 2 + 1;
         
-        // Density for interaction mass
+        // Density affects how quickly they react to the mouse
         this.density = (Math.random() * 20) + 1;
         
-        // Low opacity for subtle effect (0.05 to 0.3)
-        this.alpha = Math.random() * 0.25 + 0.05;
+        // Medium opacity for visibility without obstruction (0.1 to 0.5)
+        this.alpha = Math.random() * 0.4 + 0.1;
 
-        // Theme colors: Purple, Blue, White - using rgb for alpha injection
+        // Theme colors: Purple, Blue, and a subtle Slate for depth
         const colors = [
           { r: 168, g: 85, b: 247 }, // Purple-500
           { r: 59, g: 130, b: 246 }, // Blue-500
-          { r: 255, g: 255, b: 255 }  // White
+          { r: 148, g: 163, b: 184 } // Slate-400
         ];
         
         const color = colors[Math.floor(Math.random() * colors.length)];
@@ -78,10 +78,9 @@ const ParticleBackground: React.FC = () => {
         if (distance < mouse.radius) {
           const forceDirectionX = dx / distance;
           const forceDirectionY = dy / distance;
-          const maxDistance = mouse.radius;
-          const force = (maxDistance - distance) / maxDistance;
+          const force = (mouse.radius - distance) / mouse.radius;
           
-          // Smoother, dampened response
+          // Smoother response
           const directionX = forceDirectionX * force * this.density * 0.6;
           const directionY = forceDirectionY * force * this.density * 0.6;
 
@@ -89,18 +88,19 @@ const ParticleBackground: React.FC = () => {
           this.y -= directionY;
         }
 
-        // Screen wrapping with buffer to avoid popping
-        if (this.x < -10) this.x = canvas.width + 10;
-        if (this.x > canvas.width + 10) this.x = -10;
-        if (this.y < -10) this.y = canvas.height + 10;
-        if (this.y > canvas.height + 10) this.y = -10;
+        // Seamless wrapping around the screen
+        if (this.x < 0) this.x = canvas.width;
+        if (this.x > canvas.width) this.x = 0;
+        if (this.y < 0) this.y = canvas.height;
+        if (this.y > canvas.height) this.y = 0;
       }
     }
 
     const init = () => {
       particles = [];
-      // Adjust density: fewer particles for a cleaner look
-      const particleCount = (canvas.width * canvas.height) / 15000;
+      // Calculate particle count based on screen area for consistent density
+      // Roughly 1 particle per 10000 pixels
+      const particleCount = (canvas.width * canvas.height) / 10000;
       
       for (let i = 0; i < particleCount; i++) {
         const x = Math.random() * canvas.width;

@@ -22,19 +22,19 @@ const Hero: React.FC = () => {
           </div>
         </RevealOnScroll>
 
-        <RevealOnScroll>
+        <RevealOnScroll delay={200}>
           <h1 className="text-6xl md:text-8xl font-bold tracking-tight text-white mb-6 leading-tight">
             Surendra <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">Kumar</span>
           </h1>
         </RevealOnScroll>
 
-        <RevealOnScroll>
+        <RevealOnScroll delay={400}>
           <p className="text-lg md:text-xl text-zinc-400 max-w-2xl mx-auto mb-10 leading-relaxed font-light">
             A passionate AI/ML enthusiast and frontend engineer crafting digital experiences that blend performance with accessibility.
           </p>
         </RevealOnScroll>
 
-        <RevealOnScroll>
+        <RevealOnScroll delay={600}>
           <div className="flex flex-col sm:flex-row items-center gap-4 justify-center">
             <a 
               href="#work" 
@@ -52,7 +52,7 @@ const Hero: React.FC = () => {
           </div>
         </RevealOnScroll>
 
-        <RevealOnScroll>
+        <RevealOnScroll delay={800}>
           <div className="mt-12 flex items-center justify-center gap-6 text-sm text-zinc-500">
             <span>Based in India</span>
             <span className="w-1 h-1 rounded-full bg-zinc-700"></span>

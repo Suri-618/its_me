@@ -12,13 +12,13 @@ const Contact: React.FC = () => {
           <h2 className="text-4xl md:text-6xl font-bold text-white mb-8 tracking-tight">Let's work together</h2>
         </RevealOnScroll>
         
-        <RevealOnScroll>
+        <RevealOnScroll delay={200}>
           <p className="text-xl text-zinc-400 mb-12 max-w-2xl mx-auto font-light">
             Have a project in mind? I'm always looking for new opportunities to build meaningful digital products.
           </p>
         </RevealOnScroll>
 
-        <RevealOnScroll>
+        <RevealOnScroll delay={400}>
           <div className="flex flex-wrap items-center justify-center gap-4 mb-16">
             <a href="mailto:suri86438@gmail.com" className="flex items-center gap-3 px-6 py-3 rounded-full bg-white text-black font-semibold hover:bg-zinc-200 transition-colors">
               <Mail size={20} />
@@ -52,7 +52,7 @@ const Contact: React.FC = () => {
           </div>
         </RevealOnScroll>
 
-        <RevealOnScroll width="100%">
+        <RevealOnScroll width="100%" delay={600}>
           <div className="p-8 rounded-3xl bg-zinc-900/30 border border-white/5 backdrop-blur-sm max-w-2xl mx-auto">
             <form className="space-y-4 text-left">
               <div className="grid grid-cols-2 gap-4">
