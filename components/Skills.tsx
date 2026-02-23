@@ -21,7 +21,7 @@ const getIconUrl = (name: string) => {
     "Linux": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg",
     "VS Code": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg",
   };
-  return map[name] || "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg";
+  return map[name] || "";
 };
 
 const skillsData: SkillCategory[] = [
@@ -64,78 +64,45 @@ const skillsData: SkillCategory[] = [
 ];
 
 const Skills: React.FC = () => {
-  // Flatten skills for the unified pill layout
-  const allSkills = skillsData.flatMap(category => category.skills);
-
   return (
-    <section className="py-24 relative overflow-hidden bg-black" id="skills">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
-        {/* Header Visuals */}
+    <section className="py-32">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <RevealOnScroll width="100%">
-          <div className="flex flex-col items-center justify-center mb-16 relative">
-            
-            {/* Abstract Shape Background Glow */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-purple-500/10 rounded-full blur-[80px] -z-10 pointer-events-none"></div>
-
-            {/* Main Visual Image (Static Crystal 3D Shape) */}
-            <div className="relative w-72 h-72 md:w-96 md:h-96 mb-2 group flex items-center justify-center">
-                 <img 
-                   src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop" 
-                   alt="Skills Crystal Holographic"
-                   className="w-full h-full object-contain opacity-90 transition-transform duration-700 group-hover:scale-105"
-                 />
-                 
-                 {/* Overlay Text */}
-                 <div className="absolute inset-0 flex items-center justify-center pt-8">
-                    <h2 className="text-5xl md:text-7xl font-bold text-white tracking-tighter drop-shadow-[0_0_25px_rgba(0,0,0,0.8)] z-20">
-                      Skills
-                    </h2>
-                 </div>
-            </div>
-            
-            <div className="flex items-center gap-3 -mt-6 relative z-30">
-              <div className="h-[2px] w-8 md:w-16 bg-gradient-to-r from-transparent to-purple-600 rounded-full"></div>
-              <span className="text-zinc-400 text-xs md:text-sm font-semibold tracking-[0.2em] uppercase whitespace-nowrap">I Constantly Try To Improve</span>
-              <div className="h-[2px] w-8 md:w-16 bg-gradient-to-l from-transparent to-purple-600 rounded-full"></div>
-            </div>
-          </div>
+          <h2 className="text-3xl md:text-5xl font-bold text-white text-center mb-16 tracking-tight">Technical Arsenal</h2>
         </RevealOnScroll>
+        
+        <div className="space-y-16">
+          {skillsData.map((category, idx) => (
+            <RevealOnScroll key={idx} width="100%">
+              <div className="relative">
+                <h3 className="text-xl font-semibold text-zinc-400 mb-8 pl-4 border-l-2 border-purple-500">{category.name}</h3>
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                  {category.skills.map((skill) => (
+                    <div key={skill.name} className="group relative flex flex-col items-center justify-center p-6 rounded-2xl bg-zinc-900/40 border border-white/5 hover:border-white/20 hover:bg-zinc-900/60 transition-all duration-300">
+                      
+                      {/* Icon */}
+                      <div className="w-12 h-12 mb-4 relative transition-transform duration-300 group-hover:scale-110">
+                        <img 
+                          src={getIconUrl(skill.name)} 
+                          alt={skill.name}
+                          className={`w-full h-full object-contain ${skill.name === 'GitHub' ? 'invert opacity-80' : ''}`}
+                        />
+                      </div>
+                      
+                      {/* Name */}
+                      <span className="text-sm font-medium text-zinc-300 group-hover:text-white transition-colors">{skill.name}</span>
 
-        {/* Skills List */}
-        <RevealOnScroll width="100%" delay={200}>
-          <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4 max-w-4xl mx-auto">
-            {allSkills.map((skill, idx) => (
-              <div 
-                key={idx}
-                className="group relative flex items-center gap-3 px-6 py-3.5 rounded-2xl bg-zinc-900/80 border border-white/5 hover:border-white/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-purple-500/10 cursor-default"
-              >
-                {/* Icon */}
-                <div className="w-5 h-5 md:w-6 md:h-6 relative grayscale group-hover:grayscale-0 transition-all duration-300 opacity-70 group-hover:opacity-100">
-                  <img 
-                    src={getIconUrl(skill.name)} 
-                    alt={skill.name}
-                    className={`w-full h-full object-contain ${skill.name === 'GitHub' || skill.name === 'VS Code' ? 'invert' : ''}`}
-                  />
-                </div>
-                
-                {/* Text */}
-                <span className="text-zinc-400 font-medium text-sm md:text-base group-hover:text-white transition-colors">
-                  {skill.name}
-                </span>
-
-                {/* Subtle Glow */}
-                <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/5 group-hover:ring-purple-500/30 transition-all duration-300"></div>
-                
-                {/* Tooltip on Hover */}
-                <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-max max-w-[200px] px-3 py-1.5 bg-zinc-950 border border-white/10 rounded-lg text-xs text-zinc-300 opacity-0 group-hover:opacity-100 transition-all duration-200 pointer-events-none translate-y-2 group-hover:translate-y-0 z-30">
-                  {skill.description}
+                      {/* Tooltip */}
+                      <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-max max-w-[150px] px-3 py-2 bg-zinc-950 border border-white/10 rounded-lg text-xs text-zinc-300 shadow-xl opacity-0 group-hover:opacity-100 transition-all duration-200 pointer-events-none z-20 text-center invisible group-hover:visible translate-y-2 group-hover:translate-y-0">
+                        {skill.description}
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
-            ))}
-          </div>
-        </RevealOnScroll>
-        
+            </RevealOnScroll>
+          ))}
+        </div>
       </div>
     </section>
   );

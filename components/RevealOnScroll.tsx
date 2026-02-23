@@ -3,10 +3,9 @@ import React, { useEffect, useRef, useState } from 'react';
 interface Props {
   children: React.ReactNode;
   width?: "fit-content" | "100%";
-  delay?: number;
 }
 
-const RevealOnScroll: React.FC<Props> = ({ children, width = "fit-content", delay = 0 }) => {
+const RevealOnScroll: React.FC<Props> = ({ children, width = "fit-content" }) => {
   const ref = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -33,12 +32,8 @@ const RevealOnScroll: React.FC<Props> = ({ children, width = "fit-content", dela
   return (
     <div 
       ref={ref} 
-      style={{ width, transitionDelay: `${delay}ms` }}
-      className={`transition-all duration-1000 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] transform ${
-        isVisible 
-          ? 'opacity-100 translate-y-0 filter blur-0 scale-100' 
-          : 'opacity-0 translate-y-8 filter blur-sm scale-95'
-      }`}
+      style={{ width }}
+      className={`transition-all duration-1000 ease-out transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
     >
       {children}
     </div>
